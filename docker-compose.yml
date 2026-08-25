@@ -38,6 +38,7 @@ services:
              php artisan migrate --force &&
              php artisan serve --host=0.0.0.0 --port=8000"
 
+  # TAMBAHKAN INI ↓
   phpmyadmin:
     image: docker.io/phpmyadmin/phpmyadmin
     container_name: dinelogiq_phpmyadmin
@@ -52,18 +53,6 @@ services:
       - "8080:80"
     depends_on:
       - db
-
-  # TAMBAHKAN INI ↓
-  webserver:
-    image: docker.io/httpd:latest
-    container_name: dinelogiq_webserver
-    restart: always
-    ports:
-      - "80:80"
-    volumes:
-      - ./httpd.conf:/usr/local/apache2/conf/httpd.conf:ro
-    depends_on:
-      - phpmyadmin
 
 volumes:
   db_data:

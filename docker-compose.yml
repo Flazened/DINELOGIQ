@@ -38,5 +38,21 @@ services:
              php artisan migrate --force &&
              php artisan serve --host=0.0.0.0 --port=8000"
 
+  # TAMBAHKAN INI ↓
+  phpmyadmin:
+    image: docker.io/phpmyadmin/phpmyadmin
+    container_name: dinelogiq_phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: root
+      UPLOAD_LIMIT: 100M
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+
 volumes:
   db_data:

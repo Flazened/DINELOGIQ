@@ -20,6 +20,7 @@ services:
     container_name: dinelogiq_app
     ports:
       - "8000:8000"
+      - "5173:5173"  # PORT UNTUK VITE
     volumes:
       - .:/app:z
     environment:
@@ -33,12 +34,11 @@ services:
     command: >
       sh -c "composer install --no-interaction &&
              npm install &&
-             npm run build &&
+             npm run dev -- --host=0.0.0.0 --port=5173 &
              php artisan key:generate &&
              php artisan migrate --force &&
              php artisan serve --host=0.0.0.0 --port=8000"
 
-  # TAMBAHKAN INI ↓
   phpmyadmin:
     image: docker.io/phpmyadmin/phpmyadmin
     container_name: dinelogiq_phpmyadmin

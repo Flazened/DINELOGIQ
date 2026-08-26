@@ -6,4 +6,32 @@
 @theme {
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
+
+    --color-ink: #000000;
+    --color-paper: #ffffff;
+    --color-teal: #004643;
+    --color-slate: #667080;
+    --color-crimson: #BC002C;
+    --color-gold: #FFBA43;
+    --color-maroon: #7F0017;
+    --color-redbright: #FF003C;
+    --color-charcoal: #201B1B;
+}
+
+@layer components {
+    .category-pill {
+        @apply flex items-center gap-2 bg-teal text-paper font-semibold text-sm px-5 py-2.5 rounded-full hover:opacity-90 transition;
+    }
+
+    .menu-card {
+        @apply bg-paper rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-200;
+    }
+
+    .menu-card img {
+        @apply w-full h-40 object-cover;
+    }
+
+    .section-title {
+        @apply text-paper text-lg md:text-xl font-bold tracking-wide mb-5;
+    }
 }

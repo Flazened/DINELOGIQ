@@ -10,6 +10,6 @@ Route::get('/Landing', function () {
     return view('Home');
 });
 
-Route::get('/Landing/Menu', function () {
-    return view("Menu");
+Route::get('/Landing/menu', function () {
+    return view("menu");
 });

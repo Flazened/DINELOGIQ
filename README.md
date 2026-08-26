@@ -1,16 +1,26 @@
-```markdown
-# 🍜 DINELOGIQ
+<div align="center">
 
-> Aplikasi manajemen menu restoran dengan tampilan elegan berbasis Laravel, Tailwind CSS v4, dan Vite.
+  <h1>🍽️ DINELOGIQ</h1>
+  <p><b>A Modern, Intelligent Restaurant Management & POS Solution</b></p>
 
-![Laravel](https://img.shields.io/badge/Laravel-11.x-red?style=flat&logo=laravel)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4.0.7-06B6D4?style=flat&logo=tailwind-css)
-![Vite](https://img.shields.io/badge/Vite-5.x-646CFF?style=flat&logo=vite)
-![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=flat&logo=docker)
-![Podman](https://img.shields.io/badge/Podman-Ready-892CA0?style=flat&logo=podman)
+  <p>
+    <a href="https://php.net"><img src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP"></a>
+    <a href="https://laravel.com"><img src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" alt="Laravel"></a>
+    <a href="https://tailwindcss.com"><img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS"></a>
+    <a href="https://mariadb.org"><img src="https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white" alt="MariaDB"></a>
+  </p>
+
+  <p>
+    <img src="https://img.shields.io/github/last-commit/Flazened/DINELOGIQ?style=flat-square&color=blue" alt="Last Commit">
+    <img src="https://img.shields.io/github/repo-size/Flazened/DINELOGIQ?style=flat-square&color=green" alt="Repo Size">
+    <img src="https://img.shields.io/github/license/Flazened/DINELOGIQ?style=flat-square&color=orange" alt="License">
+  </p>
+
+  <sub>Streamlining dining management, order workflows, and table logistics in one unified platform.</sub>
+
+</div>
 
 ---
-
 ## 📋 Daftar Isi
 
 - [Teknologi](#-teknologi)

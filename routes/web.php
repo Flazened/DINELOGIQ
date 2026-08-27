@@ -11,5 +11,5 @@ Route::get('/Landing', function () {
 });
 
 Route::get('/Landing/menu', function () {
-    return view("menu");
+    return view("Menu");
 });

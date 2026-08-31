@@ -11,15 +11,7 @@
     <body>
         
         @include('partials.header')
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
         @include('partials.footer')
         
         <p></p>

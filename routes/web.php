@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+//Route Buat Welcome
+Route::get('/welcome' , function() {
+    return view('welcome');
+})->name('welcome');
 
 // Route untuk Home
 Route::get('/home', function () {

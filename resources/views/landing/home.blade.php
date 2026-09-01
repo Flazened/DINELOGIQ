@@ -10,7 +10,12 @@
 
 </head>
     <body>
-        @include('partials.header')
+
+        
+        @include('partials.landing.header')
+        
+
+        
         <div class="relative z-10 h-[145vh] w-full"></div>
         <!-- Tambahkan class relative dan z-10 agar naik ke atas background -->
         <div class="relative z-10 -ml-20">
@@ -22,7 +27,7 @@
                 <img src="{{ asset('img/Food/Ramen-Wangy.png') }}" class="h-auto w-80 ml-10">
             </div>        
         </div>
-
+        <div class="fixed bottom-0 left-0 z-10 h-[5vh] w-full"></div>
         <div class="relative z-10 h-[5vh] w-full"></div>
         <div>
             <img src="{{ asset('img/Background/Background-Home-2.png') }}" class="absolute scale-100 min-h-screen object-fit ">
@@ -116,7 +121,11 @@
             </div>
         </div>
 
-        @include('partials.footer')
+
+        
+        @include('partials.landing.footer')
+        
+
         
         <p></p>
     </body>

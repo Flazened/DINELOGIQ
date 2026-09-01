@@ -9,18 +9,20 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
     <body>
+
+        <-Header->
+        @include('partials.landing.header')
+        <-Header->
+
         
-        @include('partials.header')
     
     
     
     
     
-    
-    
-    
-    
-        @include('partials.footer')
+        <-Footer->
+        @include('partials.landing.footer')
+        <-Footer->
         
         <p></p>
     </body>

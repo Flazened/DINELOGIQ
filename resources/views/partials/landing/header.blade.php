@@ -55,7 +55,7 @@
 
                 <!-- ABOUT -->
                 <li>
-                    <a href="{{ route('about') }}" 
+                    <a href="{{ route('cart') }}" 
                     class="relative font-bold text-white text-3xl after:absolute after:-bottom-2 after:left-0 after:h-1 after:rounded-full after:transition-all after:duration-300 
                     {{ request()->routeIs('about') ? 'after:w-full after:bg-yellow-400' : 'after:w-0 hover:after:w-full hover:after:bg-yellow-400' }}">
                         About

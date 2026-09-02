@@ -27,9 +27,9 @@ Route::get('/contact', function () {
 })->name('contact');
 
 // Route untuk About
-Route::get('/about', function () {
-    return view('landing.about');
-})->name('about');
+Route::get('/cart', function () {
+    return view('landing.cart');
+})->name('cart');
 
 
 // Bagian Admin Page

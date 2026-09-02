@@ -79,6 +79,7 @@ cd DINELOGIQ
 ### 2. Siapkan file environment
 ```bash
 cp .env.example .env
+npm install
 ```
 
 > **Catatan:** Konfigurasi database di `.env` sudah disesuaikan dengan `docker-compose.yml`. Jangan ubah kecuali Anda tahu apa yang dilakukan.

@@ -292,26 +292,5 @@ Dibangun dengan ❤️ menggunakan:
 **DINELOGIQ** — Nikmati pengalaman kuliner Anda! 🍜
 ```
 
----
-
-## 📝 Cara Menggunakan README Ini:
-
-1. **Copy** semua kode di atas
-2. **Paste** ke file `README.md` di project Anda
-3. **Sesuaikan** bagian-bagian yang perlu (misalnya link demo, screenshot, dll)
-4. **Commit & Push** ke GitHub
-
----
-
-## ✨ Keunggulan README Ini:
-
-| Fitur | Keterangan |
-|-------|------------|
-| ✅ **Docker & Podman** | Support kedua container engine |
-| ✅ **Development & Production** | Mode running dijelaskan dengan jelas |
-| ✅ **Troubleshooting** | Solusi untuk masalah umum |
-| ✅ **Struktur Proyek** | Memudahkan navigasi kode |
-| ✅ **Badges** | Tampilan lebih profesional |
-| ✅ **Kontribusi** | Panduan untuk contributor |
 
 ---

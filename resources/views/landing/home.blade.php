@@ -14,7 +14,7 @@
         
         @include('partials.landing.header')
         <img src="{{ asset('img/Background/BG-Header-Home.png') }}"
-            class="-mt-40 realtive z-0">
+            class="-mt-40 relative z-0 justify-center">
         
 
         

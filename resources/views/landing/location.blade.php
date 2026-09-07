@@ -10,19 +10,14 @@
 </head>
     <body>
 
-        <-Header->
+
         @include('partials.landing.header')
-        <-Header->
+
+
 
         
-    
-    
-    
-    
-    
-        <-Footer->
         @include('partials.landing.footer')
-        <-Footer->
+
 
 
     </body>

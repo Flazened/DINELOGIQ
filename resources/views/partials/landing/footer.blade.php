@@ -22,4 +22,6 @@
         <img src=" {{ asset('img/Logo/Facebook.png') }}" class="ml-5">    
         <h1 class="text-white mt-25 -ml-85 font-bold text-3xl " >Copyright © 2026 Dinelogiq</h1>
     </div>
+    <div class="relative z-10 flex flex-row h-15 ml-20 mt-5">
+        <h1 class="text-white mt-25 font-bold text-3xl " ></h1>
 </footer>

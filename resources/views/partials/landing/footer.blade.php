@@ -1,5 +1,4 @@
 <footer class="relative">
-    <-Background->
         <img src="{{ asset('img/Background/BG-Footer.png') }}"
         class="absolute inset-0 w-full h-full justify-center object-cover">
     <div class="relative z-10 flex justify-center -ml-140">

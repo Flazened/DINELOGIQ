@@ -14,7 +14,7 @@
         
         @include('partials.landing.header')
         <img src="{{ asset('img/Background/BG-Header-Home.png') }}"
-            class="-mt-40 relative z-0 justify-center w-full bg-cover bg-center bg-no-repeat flex items-center">
+            class="-mt-40 relative z-0 justify-centerd w-full bg-cover bg-center bg-no-repeat flex items-center">
 
         <div class="bg-[#201B1B] h-160 py-20">
             <div class="ml-20 mt-20">
@@ -198,10 +198,41 @@
 
             <div 
               style="background-image: url('{{ asset('img/Background/BG-Home-Chill.png') }}');" 
-              class="relative h-screen w-full bg-cover bg-center bg-no-repeat flex items-center justify-center">
+              class="relative h-300 w-full bg-cover bg-center bg-no-repeat flex justify-center">
                 <div>
-                    <p class="text-white text-2xl font-bold">holla how are you?</p>
+                    <p class="text-[#F9FF43] text-8xl font-bold mt-12 flex justify-center">Contact Us</p>
+                    <div class="mt-10">
+                        <a href="{{ route('contact') }}" class="text-white underline flex justify-center text-2xl">for more information -></a>
+                    </div>
+                    <div class="mt-40">
+                        <h1 class="text-white font-medium text-4xl text-center">Need an expert? you are more than welcomed to leave your contact info <br> and we will being touch shortly</h1>
+                    </div>
+                    <div class="flex gap-30 justify-between">
+                        <div class="flex justify-center mt-30">
+                            <section class="bg-[#7F0017] h-120 w-90 rounded-4xl shadow-2xs flex flex-col items-center">
+                                <img src="{{ asset('img/Icon/Home.png') }}" class="mt-20">
+                                <p class="text-[#F9FF43] mt-8 text-2xl font-bold">Visit Us</p>
+                                <p class="text-white flex px-2 text-center mt-12 text-xl font-bold">Jl.Sisingamangaraja.Blok 3E Pontianak, Kalimantan Barat</p>
+                            </section>
+                        </div>
+                        <div class="flex justify-center mt-30">
+                            <section class="bg-[#7F0017] h-120 w-90 rounded-4xl shadow-2xs flex flex-col items-center">
+                                <img src="{{ asset('img/Icon/Telephone.png') }}" class="mt-20">
+                                <p class="text-[#F9FF43] mt-8 text-2xl font-bold">Call Us</p>
+                                <p class="text-white flex px-2 text-center mt-18 text-xl font-bold">+62 (821) 1234 5678</p>
+                            </section>
+                        </div>
+                        <div class="flex justify-center mt-30">
+                            <section class="bg-[#7F0017] h-120 w-90 rounded-4xl shadow-2xs flex flex-col items-center">
+                                <img src="{{ asset('img/Icon/Email.png') }}" class="mt-20">
+                                <p class="text-[#F9FF43] mt-8 text-2xl font-bold">Gmail</p>
+                                <p class="text-white flex px-2 text-center mt-18 text-xl font-bold">dinelogiq@gmail.com</p>
+                            </section>
+                        </div>
+                        </div>
+                    </div>    
                 </div>
+                
             </div>
         </div>    
 

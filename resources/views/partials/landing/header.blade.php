@@ -1,6 +1,6 @@
 <header class="relative z-10">
   <!-- Background dengan gradient -->
-  <div class="bg-gradient-to-b from-black/70 h-32">
+  <div class="bg-gradient-to-b from-black/70 h-32 bg-[#7F0017]">
     <!-- Navigasi -->
     <nav class="">
       <ul class="conatiner mx-auto justify-center py-6 flex gap-20">

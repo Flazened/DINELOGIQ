@@ -133,10 +133,11 @@
                 </div>
                 
             </div>
-            <img src="{{ asset('img/Background/BG-Food-Home.png') }}" alt="Food Background" class="flex items-center relative z-0 -mt-55">
+            <img src="{{ asset('img/Background/BG-Food-Home.png') }}" alt="Food Background" class="flex relative z-0 -mt-55 w-full bg-cover bg-center bg-no-repeat justify-center">
         </div>
 
-        <div class="bg-[#201B1B] h-240">
+        <div>
+        <div class="bg-[#201B1B] h-240 relative z-10">
             <div class="">
                 <h1 class="flex justify-center text-[#F9FF43] text-8xl font-bold py-12 px-54">About Us</h1>
                 

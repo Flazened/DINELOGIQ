@@ -61,14 +61,16 @@
             <div class="mt-30">
                 <p class="ml-15 text-5xl text-white">{{ $categoryLabels[$category] }}</p>
                 <div class="flex justify-between flex-wrap px-5">
-                    @foreach($items as $item)
-                    <section class="bg-white h-130 w-100 rounded-[20px] mt-30">
-                        <img src="{{ asset('img/Food/' . $item['image']) }}" class="h-90 w-90 ml-5 mt-5 object-cover rounded-2xl">
-                        <div class="flex px-5 py-10 justify-between">
-                            <p class="text-4xl font-bold">{{ $item['name'] }}</p>
-                            <img src="{{ asset('img/Icon/next.png') }}" class="h-8 w-auto">
-                        </div>
-                    </section>
+                    @foreach($items as $index => $item)
+                    <a href="{{ route('menu.show', $index + 1) }}" class="block no-underline hover:scale-105 transition-transform duration-300">
+                        <section class="bg-white h-130 w-100 rounded-[20px] mt-30 cursor-pointer">
+                            <img src="{{ asset('img/Food/' . $item['image']) }}" class="h-90 w-90 ml-5 py-5 object-cover rounded-2xl">
+                            <div class="flex px-5 py-10 justify-between items-center">
+                                <p class="text-4xl font-bold text-black">{{ $item['name'] }}</p>
+                                <img src="{{ asset('img/Icon/next.png') }}" class="h-8 w-auto">
+                            </div>
+                        </section>
+                    </a>
                     @endforeach
                 </div>
             </div>

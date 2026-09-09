@@ -17,8 +17,13 @@
                 <h1 class="text-white text-2xl font-black">Filter</h1>
             </section>
             <section class="h-18 w-280 border-3 border-black rounded-[200px] flex items-center justify-between">
-                <input class="text-black px-10 text-2xl" type="text" placeholder="Search for ramen...">
-                <img src="{{ asset('img/Icon/search.png') }}" alt="search" class="mr-10 h-auto w-8">
+                <input 
+                class="text-black px-10 text-2xl focus:outline-none" 
+                type="text" 
+                placeholder="Search for ramen...">
+                <img src="{{ asset('img/Icon/search.png') }}" 
+                alt="search" 
+                class=" mr-10 h-auto w-8">
             </section>
         </div>
 
@@ -41,7 +46,7 @@
 
                         <section class="flex justify-between items-center px-4 rounded-[38px] ml-25 mr-5 bg-[#004643] border-5 border-[#667080] h-20 w-80">
                             <img src="{{ asset('img/Food/Menu-3.png') }}" class="h-20 w-auto">
-                            <p class="text-white font-medium text-[25px] mr-20s">Side Dish</p>
+                            <p class="text-white font-medium text-[25px] mr-20">Side Dish</p>
                         </section>
 
                         <section class="flex justify-between items-center px-4 rounded-[38px] ml-25 mr-5 bg-[#004643] border-5 border-[#667080] h-20 w-80">
@@ -63,13 +68,13 @@
                 </div>
         </div>
 
-        <div class=" bg-[#201B1B] h-1500 w-auto]">
+        <div class=" bg-[#201B1B] h-auto w-auto] py-20 px-5">
 
             <div class="flex justify-between px-10">
-                <div class="ml-130">
-                    <p class="text-[#F9FF43]  mt-10 text-7xl font-bold">Our Menu</p>
+                <div class="ml-120">
+                    <p class="text-[#F9FF43] text-8xl font-bold">Our Menu</p>
                 </div>
-                <div class="bg-[#004643] h-15 w-30 ml-100 mt-10 rounded-[40px] ">
+                <div class="bg-[#004643] h-15 w-30 rounded-[40px] ">
                     <div class="flex mt-3 ml-5">
                         <img src="{{ asset('img/Icon/Cart.png') }}" class="h-8 w-auto flex ">
                         <p class="text-white -mt-2 text-[35px] font-bold px-4">0</p>
@@ -78,23 +83,9 @@
             </div>
             <div class="mt-30">
                 <p class="ml-15 text-5xl text-white">APPETIZERS - GOURMET BITES</p>
-                <div class="flex justify-between ml-5 flex-wrap">
+                <div class="flex justify-between flex-wrap px-5">
                     <section class=" bg-white h-130 w-100 rounded-[20px] mt-30">
-                        <img src="{{ asset('img/Food/Edamame.png') }}" class="h-90 w-90 ml-5 mt-5 ">
-                        <div class="flex px-5 py-10 justify-between">
-                            <p class="text-4xl font-bold">Edamame</p>
-                            <img src="{{ asset('img/Icon/next.png') }}" class="h-8 w-auto">
-                        </div>
-                    </section>
-                    <section class=" bg-white h-130 w-100 rounded-[20px] mt-30">
-                        <img src="{{ asset('img/Food/Edamame.png') }}" class="h-90 w-90 ml-5 mt-5 ">
-                        <div class="flex px-5 py-10 justify-between">
-                            <p class="text-4xl font-bold">Edamame</p>
-                            <img src="{{ asset('img/Icon/next.png') }}" class="h-8 w-auto">
-                        </div>
-                    </section>
-                    <section class=" bg-white h-130 w-100 rounded-[20px] mt-30">
-                        <img src="{{ asset('img/Food/Edamame.png') }}" class="h-90 w-90 ml-5 mt-5 ">
+                        <img src="{{ asset('img/Food/Edamame.png') }}" class="h-90 w-90 ml-5 mt-5 object-cover rounded-2xl">
                         <div class="flex px-5 py-10 justify-between">
                             <p class="text-4xl font-bold">Edamame</p>
                             <img src="{{ asset('img/Icon/next.png') }}" class="h-8 w-auto">
@@ -102,6 +93,77 @@
                     </section>
                 </div>
             </div>
+
+            <div class="mt-30">
+                <p class="ml-15 text-5xl text-white">MAIN COURSE- CHEF’S SIGNATURE</p>
+                <div class="flex justify-between flex-wrap px-5">
+                    <section class=" bg-white h-130 w-100 rounded-[20px] mt-30">
+                        <img src="{{ asset('img/Food/ShoyuRamen.png') }}" class="h-90 w-90 ml-5 mt-5 object-cover rounded-2xl">
+                        <div class="flex px-5 py-10 justify-between">
+                            <p class="text-4xl font-bold">Shoyu ramen</p>
+                            <img src="{{ asset('img/Icon/next.png') }}" class="h-8 w-auto">
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <div class="mt-30">
+                <p class="ml-15 text-5xl text-white">SIDE DISH - PERFECT PAIRING’S</p>
+                <div class="flex justify-between flex-wrap px-5">
+                    <section class=" bg-white h-130 w-100 rounded-[20px] mt-30">
+                        <img src="{{ asset('img/Food/MisoSoup.png') }}" class="h-90 w-90 ml-5 mt-5 object-cover rounded-2xl">
+                        <div class="flex px-5 py-10 justify-between">
+                            <p class="text-4xl font-bold">Miso soup</p>
+                            <img src="{{ asset('img/Icon/next.png') }}" class="h-8 w-auto">
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <div class="mt-30">
+                <p class="ml-15 text-5xl text-white">DESSERT - DIVINE ENDINGS</p>
+                <div class="flex justify-between flex-wrap px-5">
+                    <section class=" bg-white h-130 w-100 rounded-[20px] mt-30">
+                        <img src="{{ asset('img/Food/KakiGori.png') }}" class="h-90 w-90 ml-5 mt-5 object-cover rounded-2xl">
+                        <div class="flex px-5 py-10 justify-between">
+                            <p class="text-4xl font-bold">Kakigori</p>
+                            <img src="{{ asset('img/Icon/next.png') }}" class="h-8 w-auto">
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <div class="mt-30">
+                <p class="ml-15 text-5xl text-white">HOT DRINKS - WARMING INFUSIONS</p>
+                <div class="flex justify-between flex-wrap px-5">
+                    <section class=" bg-white h-130 w-100 rounded-[20px] mt-30">
+                        <img src="{{ asset('img/Food/HotOcha.png') }}" class="h-90 w-90 ml-5 mt-5 object-cover rounded-2xl">
+                        <div class="flex px-5 py-10 justify-between">
+                            <p class="text-4xl font-bold">Hot ocha</p>
+                            <img src="{{ asset('img/Icon/next.png') }}" class="h-8 w-auto">
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <div class="mt-30">
+                <p class="ml-15 text-5xl text-white">COLD DRINKS - CHILLED ELIXIRS</p>
+                <div class="flex justify-between flex-wrap px-5">
+                    <section class=" bg-white h-130 w-100 rounded-[20px] mt-30">
+                        <img src="{{ asset('img/Food/Genmaicha.png') }}" class="h-90 w-90 ml-5 mt-5 object-cover rounded-2xl">
+                        <div class="flex px-5 py-10 justify-between">
+                            <p class="text-4xl font-bold">Genmaicha</p>
+                            <img src="{{ asset('img/Icon/next.png') }}" class="h-8 w-auto">
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+
+
+            
+
+            
 
 
 

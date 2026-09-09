@@ -22,7 +22,7 @@
             <!-- LOGO -->
             <div class="py-6 text-center border-b border-white/10 mb-8">
                 <!-- Ganti path gambar dengan path lokal Anda -->
-                <img src="/img/Logo/logo.png" alt="Dinelogiq Logo" class="w-24 mx-auto mb-2 drop-shadow-md">
+                <img src="{{ asset('img/Logo/Logo-Pure.png') }}" alt="Dinelogiq Logo" class="w-24 mx-auto mb-2 drop-shadow-md">
                 <h1 class="title-font text-2xl font-bold tracking-widest text-[#FFF1C7]">ADMIN</h1>
             </div>
             
@@ -97,7 +97,6 @@
                             <th class="px-4 py-3.5 title-font tracking-wider text-xs font-bold text-center">Item</th>
                             <th class="px-4 py-3.5 title-font tracking-wider text-xs font-bold text-center">Total</th>
                             <th class="px-4 py-3.5 title-font tracking-wider text-xs font-bold text-center">Status</th>
-                            <th class="px-4 py-3.5 title-font tracking-wider text-xs font-bold text-center w-20">Control</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200 text-xs font-semibold text-gray-700">
@@ -119,11 +118,6 @@
                                     <i class="fa-solid fa-chevron-down text-[9px] text-[#b45309] absolute right-2.5 top-2.5 pointer-events-none"></i>
                                 </div>
                             </td>
-                            <td class="px-4 py-5 text-center">
-                                <button type="button" onclick="return confirm('Delete order #1?')" class="w-6 h-6 rounded bg-red-100 text-red-600 hover:bg-red-200 transition inline-flex items-center justify-center text-xs">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </button>
-                            </td>
                         </tr>
 
                         <!-- Row 2 -->
@@ -142,13 +136,7 @@
                                     </select>
                                     <i class="fa-solid fa-chevron-down text-[9px] text-[#15803d] absolute right-2.5 top-2.5 pointer-events-none"></i>
                                 </div>
-                            </td>
-                            <td class="px-4 py-5 text-center">
-                                <button type="button" onclick="return confirm('Delete order #2?')" class="w-6 h-6 rounded bg-red-100 text-red-600 hover:bg-red-200 transition inline-flex items-center justify-center text-xs">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </button>
-                            </td>
-                        </tr>
+   
 
                     </tbody>
                 </table>

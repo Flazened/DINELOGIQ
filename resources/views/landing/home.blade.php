@@ -14,7 +14,7 @@
         
         @include('partials.landing.header')
         <img src="{{ asset('img/Background/BG-Header-Home.png') }}"
-            class="-mt-40 relative z-0 justify-center gap-20">
+            class="-mt-40 relative z-0 justify-center w-full bg-cover bg-center bg-no-repeat flex items-center">
 
         <div class="bg-[#201B1B] h-160 py-20">
             <div class="ml-20 mt-20">
@@ -136,16 +136,74 @@
             <img src="{{ asset('img/Background/BG-Food-Home.png') }}" alt="Food Background" class="flex items-center relative z-0 -mt-55">
         </div>
 
-        <div class="bg-[#201B1B] h-160">
-            <div class=>
-                <h1 class="flex justify-center text-[#F9FF43] text-8xl font-bold py-4 px-54">About Us</h1>
+        <div class="bg-[#201B1B] h-240">
+            <div class="">
+                <h1 class="flex justify-center text-[#F9FF43] text-8xl font-bold py-12 px-54">About Us</h1>
                 
             </div>
-            <div class="bg-[#F7F7F7] h-20 w-20">
-
+            <div class="flex ml-10 mt-10">
+                <div>
+                    <div class="flex gap-8">
+                        <div class="bg-[#F7F7F7] h-80 w-120 rounded-4xl">
+                            <img src="{{ asset('img/Logo/Logo-Pure.png') }}" class="ml-105 mt-2 h-15">
+                            <div class="ml-42 bg-amber-300 h-35 w-35 rounded-[70px] ">
+                                <img src="" alt="">
+                            </div>
+                            <div class="ml-36 mt-2">
+                                <p class="text-2xl font-bold text-[#676767]">Felix Yonathan</p>
+                                <p class="font-bold text-[#676767] ml-4">UI/UX Designer</p>
+                            </div>
+                        </div>
+                        <div class="bg-[#F7F7F7] h-80 w-120 rounded-4xl">
+                            <img src="{{ asset('img/Logo/Logo-Pure.png') }}" class="ml-105 mt-2 h-15">
+                            <div class="ml-42 bg-amber-300 h-35 w-35 rounded-[70px] ">
+                                <img src="" alt="">
+                            </div>
+                            <div class="ml-36 mt-2">
+                                <p class="text-2xl font-bold text-[#676767]">Michael Yusliardy</p>
+                                <p class="font-bold text-[#676767] ml-6">Full Stack - Developer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex gap-8 mt-8">
+                        <div class="bg-[#F7F7F7] h-80 w-120 rounded-4xl">
+                            <img src="{{ asset('img/Logo/Logo-Pure.png') }}" class="ml-105 mt-2 h-15">
+                            <div class="ml-42 bg-amber-300 h-35 w-35 rounded-[70px] ">
+                                <img src="" alt="">
+                            </div>
+                            <div class="ml-36 mt-2">
+                                <p class="text-2xl font-bold text-[#676767]">Nicholas Jonathan</p>
+                                <p class="font-bold text-[#676767] ml-6">UI/UX Designer</p>
+                            </div>
+                        </div>
+                        <div class="bg-[#F7F7F7] h-80 w-120 rounded-4xl">
+                            <img src="{{ asset('img/Logo/Logo-Pure.png') }}" class="ml-105 mt-2 h-15">
+                            <div class="ml-42 bg-amber-300 h-35 w-35 rounded-[70px] ">
+                                <img src="" alt="">
+                            </div>
+                            <div class="ml-36 mt-2">
+                                <p class="text-2xl font-bold text-[#676767]">Devon Austin.V</p>
+                                <p class="font-bold text-[#676767] ml-6">UI/UX Designer</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <div class="ml-20 text-[29px] px-2">
+                    <p class="text-white">We are a team of four students who share the same interest in creating a unique ramen shop concept. Through this project, we combine our ideas, creativity, and skills to create a simple yet appealing experience for ramen lovers. This project also gives us an opportunity to learn, collaborate, and turn our ideas into something we can be proud of.</p>
+                </div>
+            </div>
+            
         </div>
 
+
+            <div 
+              style="background-image: url('{{ asset('img/Background/BG-Home-Chill.png') }}');" 
+              class="relative h-screen w-full bg-cover bg-center bg-no-repeat flex items-center justify-center">
+                <div>
+                    <p class="text-white text-2xl font-bold">holla how are you?</p>
+                </div>
+            </div>
+        </div>    
 
 
 

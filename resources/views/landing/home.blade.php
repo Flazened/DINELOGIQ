@@ -197,9 +197,8 @@
         </div>
 
 
-            <div 
-              style="background-image: url('{{ asset('img/Background/BG-Home-Chill.png') }}');" 
-              class="relative h-300 w-full bg-cover bg-center bg-no-repeat flex justify-center">
+            <div style="background-image: url('{{ asset('img/Background/BG-Home-Chill.png') }}');" 
+                 class="relative h-300 w-full bg-cover bg-center bg-no-repeat flex justify-center">
                 <div>
                     <p class="text-[#F9FF43] text-8xl font-bold mt-12 flex justify-center">Contact Us</p>
                     <div class="mt-10">

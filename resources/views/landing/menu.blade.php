@@ -63,7 +63,48 @@
                 </div>
         </div>
 
-        <div class=" bg-[#201B1B] h-200 w-auto]">
+        <div class=" bg-[#201B1B] h-1500 w-auto]">
+
+            <div class="flex justify-between px-10">
+                <div class="ml-130">
+                    <p class="text-[#F9FF43]  mt-10 text-7xl font-bold">Our Menu</p>
+                </div>
+                <div class="bg-[#004643] h-15 w-30 ml-100 mt-10 rounded-[40px] ">
+                    <div class="flex mt-3 ml-5">
+                        <img src="{{ asset('img/Icon/Cart.png') }}" class="h-8 w-auto flex ">
+                        <p class="text-white -mt-2 text-[35px] font-bold px-4">0</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-30">
+                <p class="ml-15 text-5xl text-white">APPETIZERS - GOURMET BITES</p>
+                <div class="flex justify-between ml-5 flex-wrap">
+                    <section class=" bg-white h-130 w-100 rounded-[20px] mt-30">
+                        <img src="{{ asset('img/Food/Edamame.png') }}" class="h-90 w-90 ml-5 mt-5 ">
+                        <div class="flex px-5 py-10 justify-between">
+                            <p class="text-4xl font-bold">Edamame</p>
+                            <img src="{{ asset('img/Icon/next.png') }}" class="h-8 w-auto">
+                        </div>
+                    </section>
+                    <section class=" bg-white h-130 w-100 rounded-[20px] mt-30">
+                        <img src="{{ asset('img/Food/Edamame.png') }}" class="h-90 w-90 ml-5 mt-5 ">
+                        <div class="flex px-5 py-10 justify-between">
+                            <p class="text-4xl font-bold">Edamame</p>
+                            <img src="{{ asset('img/Icon/next.png') }}" class="h-8 w-auto">
+                        </div>
+                    </section>
+                    <section class=" bg-white h-130 w-100 rounded-[20px] mt-30">
+                        <img src="{{ asset('img/Food/Edamame.png') }}" class="h-90 w-90 ml-5 mt-5 ">
+                        <div class="flex px-5 py-10 justify-between">
+                            <p class="text-4xl font-bold">Edamame</p>
+                            <img src="{{ asset('img/Icon/next.png') }}" class="h-8 w-auto">
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+
+
 
         </div>
 

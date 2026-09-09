@@ -42,13 +42,48 @@
         <div class="bg-white h-auto w-full px-20 py-20">
             <div class="flex justify-between">
                 <div>
-                    <h1 class="text-6xl font-black">Send Message</h1>
-                    <p class="mt-10 text-3xl font-light">Please fill out the form below with your details and message </p>
-                    <div>
-                        
+                    <h1 class="text-5xl font-black">Send Message</h1>
+                    <p class="mt-10 text-2xl font-light">Please fill out the form below with your details and message </p>
+                    <div class="flex mt-30 gap-20">
+                        <div class="flex flex-col">
+                            <p class="text-2xl">First Name</p>
+                            <section class="h-20 w-80  border-1 border-black mt-5 rounded-[20px] flex items-center justify-between">
+                                <input 
+                                class="text-black px-10 text-2xl focus:outline-none" 
+                                type="text"> 
+                            </section>
+                        </div>
+                        <div class="flex flex-col">
+                            <p class="text-2xl">Last Name</p>
+                            <section class="h-20 w-80  border-1 border-black mt-5 rounded-[20px] flex items-center justify-between">
+                                <input 
+                                class="text-black px-10 text-2xl focus:outline-none" 
+                                type="text"> 
+                            </section>
+                        </div>
                     </div>
+                    <div class="flex flex-col mt-20">
+                        <p class="text-2xl">Email or phone number</p>
+                        <section class="h-20 w-full  border-1 border-black mt-5 rounded-[20px] flex items-center justify-between">
+                            <input 
+                            class="text-black px-10 text-2xl focus:outline-none" 
+                            type="text"> 
+                        </section>
+                    </div>
+                    <div class="flex flex-col mt-20">
+                        <p class="text-2xl">Write your message</p>
+                        <section class="h-60 w-full  border-1 border-black mt-5 rounded-[20px] flex items-center justify-between">
+                            <input 
+                            class="text-black px-10 text-2xl focus:outline-none" 
+                            type="text"> 
+                        </section>
+                    </div>
+                    
+                        <button class="relative z-10 bg-[#7F0017] hover:bg-amber-900 transition-all duration-300 mt-20  h-20 w-full rounded-3xl flex justify-center items-center text-white font-bold text-2xl ">Submit</button>
+                        
+                    
                 </div>
-                <img src="{{ asset('img/Background/Menu-BG-Map.png') }}" class="h-200 w-auto">
+                <img src="{{ asset('img/Background/Menu-BG-Map.png') }}" class="h-280 w-auto px-20">
             </div>
         </div>
 

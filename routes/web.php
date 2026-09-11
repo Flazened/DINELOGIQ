@@ -13,6 +13,8 @@ use App\Http\Controllers\Guest\MenuController;
 use App\Http\Controllers\Guest\WelcomeController;
 use App\Http\Controllers\Guest\LocationController;
 use App\Http\Controllers\Guest\ContactController;
+use App\Http\Controllers\Guest\DetailController;
+
 
 /*
 |--------------------------------------------------------------------------

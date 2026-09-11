@@ -52,11 +52,6 @@
 
         <!-- SIGN OUT BUTTON -->
         <div>
-            <a href="#" class="flex items-center justify-center gap-3 py-3.5 px-6 rounded-xl bg-[#7F0017] hover:bg-[#BC002C] text-white font-bold transition shadow-md">
-                <i class="fa-solid fa-right-from-bracket text-lg"></i>
-                <span class="text-lg">Sign Out</span>
-            </a>
-        </div>
     </aside>
 
     <!-- MAIN CONTENT -->

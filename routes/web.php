@@ -6,8 +6,13 @@ use App\Http\Controllers\Guest\OrderController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MenuManagementController;
 use App\Http\Controllers\Admin\OrderManagementController;
+use App\Http\Controllers\Admin\SidebarController;
+use App\Http\Controllers\Admin\HeaderController;
 use App\Http\Controllers\Guest\HomeController;
 use App\Http\Controllers\Guest\MenuController;
+use App\Http\Controllers\Guest\WelcomeController;
+use App\Http\Controllers\Guest\LocationController;
+use App\Http\Controllers\Guest\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,42 +21,40 @@ use App\Http\Controllers\Guest\MenuController;
 */
 
 // ============================================
-// ROUTE ASLI (TAPI SUDAH PAKAI CONTROLLER)
+// ROUTE UTAMA (SEMUA PAKAI CONTROLLER)
 // ============================================
 
 // Route Buat Welcome
-Route::get('/welcome', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/welcome', [WelcomeController::class, 'index'])->name('welcome');
 
-// Route untuk Home (PAKAI CONTROLLER)
+// Route untuk Home
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-// Route untuk Menu (PAKAI CONTROLLER)
+// Route untuk Menu
 Route::get('/menu', [MenuController::class, 'index'])->name('menu');
 Route::get('/menu/{id}', [MenuController::class, 'show'])->name('menu.show');
 
-// Route untuk Location (TETAP CLOSURE)
-Route::get('/location', function () {
-    return view('landing.location');
-})->name('location');
+// Route untuk Location
+Route::get('/location', [LocationController::class, 'index'])->name('location');
 
-// Route untuk Contact (TETAP CLOSURE)
-Route::get('/contact', function () {
-    return view('landing.contact');
-})->name('contact');
+// Route untuk Contact
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
-// Route untuk Cart (PAKAI CONTROLLER)
+// Route untuk Cart
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 
-// Route Admin Page (PAKAI CONTROLLER)
+// Route Admin Page
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 Route::get('/admin/menu', [MenuManagementController::class, 'index'])->name('admin.menu');
 Route::get('/admin/order', [OrderManagementController::class, 'index'])->name('admin.order');
 
+// Route partials admin (Pakai CONTROLLER)
+Route::get('/partials/admin/sidebar.blade.php', [SidebarController::class, 'index'])->name('admin.sidebar');
+Route::get('/partials/admin/header.blade.php', [HeaderController::class, 'index'])->name('admin.header');
+
 
 // ============================================
-// ROUTE TAMBAHAN UNTUK CONTROLLER (BARU)
+// ROUTE TAMBAHAN UNTUK CONTROLLER
 // ============================================
 
 // Cart Routes (pakai controller)

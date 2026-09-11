@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Admin</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
     <style>
         body { font-family: 'Lato', sans-serif; background-color: #EDEDED; }
@@ -22,13 +21,13 @@
             <!-- LOGO -->
             <div class="py-6 text-center border-b border-white/10 mb-8">
                 <!-- Ganti path gambar dengan path lokal Anda -->
-                <img src="/img/Logo/logo.png" alt="Dinelogiq Logo" class="w-24 mx-auto mb-2 drop-shadow-md">
+                <img src="{{ asset('img/Logo/Logo-Pure.png') }}" alt="Dinelogiq Logo" class="w-24 mx-auto mb-2 drop-shadow-md">
                 <h1 class="title-font text-2xl font-bold tracking-widest text-[#FFF1C7]">ADMIN</h1>
             </div>
             
             <!-- NAV MENU -->
             <nav class="space-y-4">
-                <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-4 py-3.5 px-6 rounded-xl bg-[#7F0017] text-white font-bold shadow-md transition">
+                <a href="{{ route('admin.dashboard') }}" class="flex  tems-center gap-4 py-3.5 px-6 rounded-xl bg-[#7F0017] text-white font-bold shadow-md transition">
                     <i class="fa-solid fa-chart-line text-xl w-6"></i>
                     <span class="text-lg">Dashboard</span>
                 </a>
@@ -49,14 +48,6 @@
                 </a>
             </nav>
         </div>
-
-        <!-- SIGN OUT BUTTON -->
-        <div>
-            <a href="#" class="flex items-center justify-center gap-3 py-3.5 px-6 rounded-xl bg-[#7F0017] hover:bg-[#BC002C] text-white font-bold transition shadow-md">
-                <i class="fa-solid fa-right-from-bracket text-lg"></i>
-                <span class="text-lg">Sign Out</span>
-            </a>
-        </div>
     </aside>
 
     <!-- MAIN CONTENT -->
@@ -65,7 +56,7 @@
         <!-- HEADER -->
         <header class="h-24 bg-white border-b border-gray-200 px-10 flex justify-between items-center shadow-sm">
             <div class="flex flex-col">
-                <h2 class="title-font text-3xl font-bold text-[#7F0017]">Dashboard</h2>
+                <h2 class="title-font text-3xl text-[#7F0017]">Dashboard</h2>
                 <p class="text-sm text-gray-400 font-medium">Welcome back, flazened!</p>
             </div>
 

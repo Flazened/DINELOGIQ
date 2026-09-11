@@ -22,7 +22,7 @@
             <!-- LOGO -->
             <div class="py-6 text-center border-b border-white/10 mb-8">
                 <!-- Ganti path gambar dengan path lokal Anda -->
-                <img src="/img/Logo/logo.png" alt="Dinelogiq Logo" class="w-24 mx-auto mb-2 drop-shadow-md">
+                <img src="{{ asset('img/Logo/Logo-Pure.png') }}" alt="Dinelogiq Logo" class="w-24 mx-auto mb-2 drop-shadow-md">
                 <h1 class="title-font text-2xl font-bold tracking-widest text-[#FFF1C7]">ADMIN</h1>
             </div>
             
@@ -48,14 +48,6 @@
                     <span class="text-lg">View Website</span>
                 </a>
             </nav>
-        </div>
-
-        <!-- SIGN OUT BUTTON -->
-        <div>
-            <a href="#" class="flex items-center justify-center gap-3 py-3.5 px-6 rounded-xl bg-[#7F0017] hover:bg-[#BC002C] text-white font-bold transition shadow-md">
-                <i class="fa-solid fa-right-from-bracket text-lg"></i>
-                <span class="text-lg">Sign Out</span>
-            </a>
         </div>
     </aside>
 

@@ -43,6 +43,9 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 // Route untuk Cart
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 
+//Route untuk Detail
+Route::get('/detail', [DetailController::class, 'index'])->name('detail');
+
 // Route Admin Page
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 Route::get('/admin/menu', [MenuManagementController::class, 'index'])->name('admin.menu');

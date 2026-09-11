@@ -77,13 +77,15 @@
                                     <p class="font-bold text-xl">Rp62.500</p>
                                 </div>
                             </div>
-                        <div class="flex px-10 mt-30">
-                            <img src="">
-                            <p>On-Time Delivery Guarantee or 100% Compensation! <b>Details</b></p>
+                        <div class="flex flex-col items-center">
+                            <div class="flex px-10 mt-30 gap-2">
+                                <img src="{{ asset('img/Icon/Protect.png') }}" class="h-8 w-8 mt-2">
+                                <p>On-Time Delivery Guarantee or 100% Compensation! <b>Details</b></p>
+                            </div>
+                            <button class="bg-[#7F0017] text-white font-bold text-xl mt-5 h-13 rounded-4xl w-80 mb-5 hover:bg-amber-900 duration-300">
+                                Checkout
+                            </button>
                         </div>
-                        <button class="bg-[#7F0017] text-white font-bold text-xl mt-5 h-13 rounded-4xl w-80 ml-10 mb-5 hover:bg-amber-900 duration-300">
-                            Checkout
-                        </button>
 
                 </div>
 

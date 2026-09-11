@@ -10,7 +10,7 @@
 </head>
     <body>
         @include('partials.landing.header')
-        <img src="{{ asset('') }}"
+        <img src="{{ asset('img/Background/Menu-Header-BG.png') }}"
              class="-mt-40 relative z-0 justify-centerd w-full bg-cover bg-center bg-no-repeat flex items-center">
         <div class="bg-[#F0EDE5] h-40 w-full flex justify-between px-20 items-center">
             <section class="bg-black w-40 h-20 rounded-[40px] flex justify-center items-center">
@@ -84,12 +84,14 @@
             <div class="mt-30">
                 <p class="ml-15 text-5xl text-white">APPETIZERS - GOURMET BITES</p>
                 <div class="flex justify-between flex-wrap px-5">
-                    <section class=" bg-white h-130 w-100 rounded-[20px] mt-30">
+                    <section class=" bg-white h-130 w-100 rounded-[20px] mt-30 hover:scale-105 duration-300">
+                        <a href="{{ route('detail') }}">
                         <img src="{{ asset('img/Food/Edamame.png') }}" class="h-90 w-90 ml-5 mt-5 object-cover rounded-2xl">
                         <div class="flex px-5 py-10 justify-between">
                             <p class="text-4xl font-bold">Edamame</p>
                             <img src="{{ asset('img/Icon/next.png') }}" class="h-8 w-auto">
                         </div>
+                        </a>
                     </section>
                 </div>
             </div>
@@ -97,7 +99,7 @@
             <div class="mt-30">
                 <p class="ml-15 text-5xl text-white">MAIN COURSE- CHEF’S SIGNATURE</p>
                 <div class="flex justify-between flex-wrap px-5">
-                    <section class=" bg-white h-130 w-100 rounded-[20px] mt-30">
+                    <section class=" bg-white h-130 w-100 rounded-[20px] mt-30 hover:scale-105 duration-300">
                         <img src="{{ asset('img/Food/ShoyuRamen.png') }}" class="h-90 w-90 ml-5 mt-5 object-cover rounded-2xl">
                         <div class="flex px-5 py-10 justify-between">
                             <p class="text-4xl font-bold">Shoyu ramen</p>
@@ -110,7 +112,7 @@
             <div class="mt-30">
                 <p class="ml-15 text-5xl text-white">SIDE DISH - PERFECT PAIRING’S</p>
                 <div class="flex justify-between flex-wrap px-5">
-                    <section class=" bg-white h-130 w-100 rounded-[20px] mt-30">
+                    <section class=" bg-white h-130 w-100 rounded-[20px] mt-30 hover:scale-105 duration-300">
                         <img src="{{ asset('img/Food/MisoSoup.png') }}" class="h-90 w-90 ml-5 mt-5 object-cover rounded-2xl">
                         <div class="flex px-5 py-10 justify-between">
                             <p class="text-4xl font-bold">Miso soup</p>
@@ -123,7 +125,7 @@
             <div class="mt-30">
                 <p class="ml-15 text-5xl text-white">DESSERT - DIVINE ENDINGS</p>
                 <div class="flex justify-between flex-wrap px-5">
-                    <section class=" bg-white h-130 w-100 rounded-[20px] mt-30">
+                    <section class=" bg-white h-130 w-100 rounded-[20px] mt-30 hover:scale-105 duration-300">
                         <img src="{{ asset('img/Food/KakiGori.png') }}" class="h-90 w-90 ml-5 mt-5 object-cover rounded-2xl">
                         <div class="flex px-5 py-10 justify-between">
                             <p class="text-4xl font-bold">Kakigori</p>
@@ -136,7 +138,7 @@
             <div class="mt-30">
                 <p class="ml-15 text-5xl text-white">HOT DRINKS - WARMING INFUSIONS</p>
                 <div class="flex justify-between flex-wrap px-5">
-                    <section class=" bg-white h-130 w-100 rounded-[20px] mt-30">
+                    <section class=" bg-white h-130 w-100 rounded-[20px] mt-30 hover:scale-105 duration-300">
                         <img src="{{ asset('img/Food/HotOcha.png') }}" class="h-90 w-90 ml-5 mt-5 object-cover rounded-2xl">
                         <div class="flex px-5 py-10 justify-between">
                             <p class="text-4xl font-bold">Hot ocha</p>
@@ -149,7 +151,7 @@
             <div class="mt-30">
                 <p class="ml-15 text-5xl text-white">COLD DRINKS - CHILLED ELIXIRS</p>
                 <div class="flex justify-between flex-wrap px-5">
-                    <section class=" bg-white h-130 w-100 rounded-[20px] mt-30">
+                    <section class=" bg-white h-130 w-100 rounded-[20px] mt-30 hover:scale-105 duration-300">
                         <img src="{{ asset('img/Food/Genmaicha.png') }}" class="h-90 w-90 ml-5 mt-5 object-cover rounded-2xl">
                         <div class="flex px-5 py-10 justify-between">
                             <p class="text-4xl font-bold">Genmaicha</p>

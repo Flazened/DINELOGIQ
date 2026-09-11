@@ -10,8 +10,7 @@
 </head>
     <body>
         @include('partials.landing.header')
-        <img src="{{ asset('img/Background/Menu-Header-BG.png') }}"
-             class="-mt-40 relative z-0 justify-centerd w-full bg-cover bg-center bg-no-repeat flex items-center">
+        <img src="{{ asset('img/Background/Menu-Header-BG.png') }}" class="w-full">
         <div class="bg-[#F0EDE5] h-40 w-full flex justify-between px-20 items-center">
             <section class="bg-black w-40 h-20 rounded-[40px] flex justify-center items-center">
                 <h1 class="text-white text-2xl font-black">Filter</h1>

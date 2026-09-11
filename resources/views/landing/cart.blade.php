@@ -25,11 +25,15 @@
                     <div class="bg-[#FAFAFA] flex mt-10">
                         <img src="{{ asset('img/Food/HokkaidoRamen.png')}}" class="h-50 w-50">
                         <div class="flex flex-col justify-between">
-                            <p>Hokkaido Ramen</p>
-                            <div class="inline-flex items-center border-2 border-[#D1DADD] rounded-2xl h-10 px-2">
-                                <button class="w-8 h-8 flex items-center justify-center text-lg font-medium hover:bg-gray-100 rounded-full">−</button>
-                                <span class="w-8 text-center text-lg font-semibold">1</span>
-                                <button class="w-8 h-8 flex items-center justify-center text-lg font-medium hover:bg-gray-100 rounded-full">+</button>
+                            <p class="mt-14 font-medium text-xl">Hokkaido Ramen</p>
+                            <div>
+                                <div class="inline-flex items-center border-2 border-[#D1DADD] rounded-2xl h-10 px-2 gap-0.5 mb-10">
+                                    <button class="w-8 h-8 flex items-center justify-center text-lg font-medium hover:bg-gray-100 rounded-full">−</button>
+                                    <div class="bg-[#D1DADD] h-5 w-[2px] rounded-2xl"></div>
+                                    <span class="w-8 text-center text-lg font-semibold">1</span>
+                                    <div class="bg-[#D1DADD] h-5 w-[2px] rounded-2xl"></div>
+                                    <button class="w-8 h-8 flex items-center justify-center text-lg font-medium hover:bg-gray-100 rounded-full">+</button>
+                                </div>
                             </div>
                         </div>
                     </div>

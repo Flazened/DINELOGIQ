@@ -279,6 +279,59 @@ Project ini bersifat open-source dan dapat digunakan untuk keperluan belajar ata
 
 ---
 
+# 🍽️ DINELOGIQ
+
+DINELOGIQ adalah aplikasi **Restaurant Management & POS** yang dirancang untuk membantu restoran mengelola menu, pesanan, meja, dan proses operasional secara lebih terstruktur dalam satu sistem.
+
+## 📖 Deskripsi Aplikasi
+
+DINELOGIQ menyediakan sistem pemesanan makanan dan pengelolaan restoran berbasis web. Aplikasi ini memungkinkan pelanggan melakukan pemesanan secara langsung melalui sistem tanpa harus membuat akun terlebih dahulu.
+
+Salah satu fitur utama DINELOGIQ adalah **Guest Order**, yaitu fitur yang memungkinkan pelanggan melakukan pemesanan sebagai tamu dengan proses yang lebih cepat dan sederhana.
+
+## ⭐ Fitur Utama
+
+### 🛒 Guest Order
+
+Guest Order memungkinkan pelanggan melakukan pemesanan tanpa perlu melakukan login atau membuat akun.
+
+Alur pemesanan:
+
+1. Pelanggan membuka aplikasi DINELOGIQ.
+2. Pelanggan melihat menu yang tersedia.
+3. Pelanggan memilih makanan atau minuman.
+4. Produk dimasukkan ke dalam keranjang.
+5. Pelanggan mengatur jumlah pesanan.
+6. Pelanggan melakukan checkout sebagai guest.
+7. Pesanan dikirim ke sistem restoran untuk diproses.
+
+Fitur ini dibuat untuk memberikan pengalaman pemesanan yang lebih cepat karena pelanggan tidak perlu melakukan registrasi terlebih dahulu.
+
+### 🍴 Manajemen Menu
+
+Sistem menyediakan pengelolaan menu restoran sehingga data makanan dan minuman dapat ditampilkan dan digunakan dalam proses pemesanan.
+
+### 📋 Manajemen Pesanan
+
+Pesanan yang dibuat pelanggan dapat dikelola melalui sistem sehingga alur order restoran menjadi lebih terstruktur.
+
+### 🪑 Manajemen Meja
+
+DINELOGIQ juga mendukung pengelolaan informasi meja untuk membantu restoran dalam mengatur kebutuhan operasional dan pesanan berdasarkan meja.
+
+### 📊 Restaurant Management
+
+Aplikasi menggabungkan berbagai kebutuhan operasional restoran dalam satu platform, mulai dari menu, order, hingga pengelolaan data restoran.
+
+---
+## 🎯 Tujuan
+
+DINELOGIQ dibuat untuk menyediakan sistem pengelolaan restoran yang lebih terintegrasi dan mempermudah proses pemesanan makanan.
+
+Fokus utama aplikasi adalah memberikan pengalaman order yang praktis melalui **Guest Order**, sehingga pelanggan dapat langsung memesan tanpa harus melakukan registrasi akun.
+
+---
+
 ## 🙏 Terima Kasih
 
 Dibangun dengan ❤️ menggunakan:
@@ -289,8 +342,5 @@ Dibangun dengan ❤️ menggunakan:
 
 ---
 
-**DINELOGIQ** — Nikmati pengalaman kuliner Anda! 🍜
-```
 
 
----

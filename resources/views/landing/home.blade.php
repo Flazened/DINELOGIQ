@@ -68,17 +68,17 @@
                 <div class="relative z-10 flex bg-[#FDFCE7] h-60 w-160 rounded-4xl mr-20">
                     <div class="px-5 py-5">
                             <h1 class="text-[#CE0C11] text-6xl font-bold"
-                                style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5)">COMBO 1</h1>
-                            <p class="py-3 ml-4 text-[22px] font-medium leading-6">Japanese Shoyu Ramen<br> and Creamy Matcha</p>
+                                style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5)">COMBO 2</h1>
+                            <p class="py-3 ml-4 text-[22px] font-medium leading-6">Japanese Miso Ramen <br>and Melon Soda Float</p>
                     
                             <div class="flex">
                                 <h1 class="ml-4 text-3xl text-[#CE0C11] font-bold"
                                 style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5)">Rp</h1>
                                 <h1 class="text-[#CE0C11] font-black mt-2 ml-2 text-7xl"
-                                style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5)">64</h1>
+                                style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5)">70</h1>
                                 <div class="mt-4 ml-2"
                                 style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5)">
-                                <p class="text-[#CE0C11] font-bold line-through">75K</p>
+                                <p class="text-[#CE0C11] font-bold line-through">80K</p>
                                 <p class="text-[#CE0C11] font-black text-4xl">K</p>
                             </div>
                         </div>
@@ -90,17 +90,17 @@
                 <div class="relative z-10 flex bg-[#FDFCE7] h-60 w-160 rounded-4xl ml-20">
                     <div class="px-5 py-5">
                             <h1 class="text-[#CE0C11] text-6xl font-bold"
-                                style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5)">COMBO 1</h1>
-                            <p class="py-3 ml-4 text-[22px] font-medium leading-6">Japanese Shoyu Ramen<br> and Creamy Matcha</p>
+                                style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5)">COMBO 3</h1>
+                            <p class="py-3 ml-4 text-[22px] font-medium leading-6">Japanese Tori Paitan <br>and Cold Ocha</p>
                     
                             <div class="flex">
                                 <h1 class="ml-4 text-3xl text-[#CE0C11] font-bold"
                                 style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5)">Rp</h1>
                                 <h1 class="text-[#CE0C11] font-black mt-2 ml-2 text-7xl"
-                                style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5)">64</h1>
+                                style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5)">68</h1>
                                 <div class="mt-4 ml-2"
                                 style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5)">
-                                <p class="text-[#CE0C11] font-bold line-through">75K</p>
+                                <p class="text-[#CE0C11] font-bold line-through">78K</p>
                                 <p class="text-[#CE0C11] font-black text-4xl">K</p>
                             </div>
                         </div>
@@ -112,17 +112,17 @@
                 <div class="relative z-10 flex bg-[#FDFCE7] h-60 w-160 rounded-4xl mr-20">
                     <div class="px-5 py-5">
                             <h1 class="text-[#CE0C11] text-6xl font-bold"
-                                style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5)">COMBO 1</h1>
-                            <p class="py-3 ml-4 text-[22px] font-medium leading-6">Japanese Shoyu Ramen<br> and Creamy Matcha</p>
+                                style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5)">COMBO 4</h1>
+                            <p class="py-3 ml-4 text-[22px] font-medium leading-6">Japanese Spicy Ramen <br>and Calpis Soda</p>
                     
                             <div class="flex">
                                 <h1 class="ml-4 text-3xl text-[#CE0C11] font-bold"
                                 style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5)">Rp</h1>
                                 <h1 class="text-[#CE0C11] font-black mt-2 ml-2 text-7xl"
-                                style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5)">64</h1>
+                                style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5)">75</h1>
                                 <div class="mt-4 ml-2"
                                 style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5)">
-                                <p class="text-[#CE0C11] font-bold line-through">75K</p>
+                                <p class="text-[#CE0C11] font-bold line-through">85K</p>
                                 <p class="text-[#CE0C11] font-black text-4xl">K</p>
                             </div>
                         </div>

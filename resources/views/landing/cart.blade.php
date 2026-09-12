@@ -170,7 +170,7 @@
 
                 <div class="flex flex-col lg:flex-row">
                     <!-- Left Side - Form -->
-                    <div class="flex-1 p-10">
+                    <div class="flex-1 p-10" id="checkoutFormContainer">
                         <!-- Progress Steps -->
                         <div class="flex items-center justify-center mb-10">
                             <div class="flex items-center">
@@ -297,7 +297,7 @@
 
                             <!-- Illustration -->
                             <div class="flex justify-center mb-8">
-                                <img src="{{ asset('img/Icon/Orderinway.png') }}" alt="Order in way" class="h-64 w-auto">
+                                <img src="{{ asset('img/Logo/Logo-Pure.png') }}" alt="Order in way" class="h-64 w-auto">
                             </div>
 
                             <div class="flex gap-4">
@@ -313,7 +313,7 @@
                         <!-- Step 3: Success -->
                         <div id="step3" class="checkout-step hidden">
                             <div class="flex flex-col items-center justify-center py-10">
-                                <img src="{{ asset('img/Icon/Orderinway.png') }}" alt="Delivery" class="h-80 w-auto mb-8">
+                                <img src="{{ asset('img/Background/Orderinway.png') }}" alt="Delivery" class="h-80 w-auto mb-8">
                                 <h2 class="text-3xl font-bold text-center mb-4">Thank you! Your order is on the way.</h2>
                                 <p class="text-gray-600 text-center mb-8">We'll send you a confirmation email shortly.</p>
                                 
@@ -487,6 +487,20 @@
             
             // Update progress indicators
             updateProgress(step);
+            
+            // Hide Order Summary panel on step 3
+            const orderSummaryPanel = document.getElementById('orderSummaryPanel');
+            const checkoutFormContainer = document.getElementById('checkoutFormContainer');
+            
+            if (step === 3) {
+                orderSummaryPanel.classList.add('hidden');
+                checkoutFormContainer.classList.remove('lg:flex-1');
+                checkoutFormContainer.classList.add('w-full');
+            } else {
+                orderSummaryPanel.classList.remove('hidden');
+                checkoutFormContainer.classList.remove('w-full');
+                checkoutFormContainer.classList.add('lg:flex-1');
+            }
             
             currentStep = step;
         }

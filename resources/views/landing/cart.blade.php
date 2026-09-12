@@ -179,7 +179,7 @@
                                 </div>
                                 <div id="line1" class="w-32 h-1 bg-gray-300 mx-2 transition-all duration-300"></div>
                                 <div id="step2Icon" class="w-10 h-10 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center font-bold transition-all duration-300">
-                                    <img src="{{ asset('img/Icon/E-Money.png') }}" class="w-5 h-5">
+                                    <img src="{{ asset('img/Icon/Payment-checkout.png') }}" class="w-5 h-5">
                                 </div>
                                 <div id="line2" class="w-32 h-1 bg-gray-300 mx-2 transition-all duration-300"></div>
                                 <div id="step3Icon" class="w-10 h-10 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center font-bold transition-all duration-300">

@@ -3,75 +3,131 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\MenuItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class MenuManagementController extends Controller
 {
     public function index()
     {
-        // Data menu (mock)
-        $menus = [
-            ['id' => 1, 'name' => 'Edamame', 'price' => 12650, 'category' => 'Appetizer', 'status' => 'unavailable'],
-            ['id' => 2, 'name' => 'Shoyu Ramen', 'price' => 55000, 'category' => 'Main dish', 'status' => 'available'],
-            ['id' => 3, 'name' => 'Miso Soup', 'price' => 15000, 'category' => 'Side dish', 'status' => 'available'],
-            ['id' => 4, 'name' => 'Kakigori', 'price' => 20000, 'category' => 'Dessert', 'status' => 'available'],
-            ['id' => 5, 'name' => 'Hot Ocha', 'price' => 8000, 'category' => 'Hot drinks', 'status' => 'available'],
-            ['id' => 6, 'name' => 'Genmaicha', 'price' => 10000, 'category' => 'Cold drinks', 'status' => 'available'],
-        ];
+        $menus = MenuItem::with('category')->latest()->get();
+        $categories = Category::orderBy('sort_order')->get();
 
-        return view('admin.menu', compact('menus'));
+        return view('admin.menu', compact('menus', 'categories'));
     }
 
     public function create()
     {
-        $categories = ['Appetizer', 'Main dish', 'Side dish', 'Dessert', 'Hot drinks', 'Cold drinks'];
-        return view('admin.menu-create', compact('categories'));
+        $categories = Category::orderBy('sort_order')->get();
+        return view('admin.menu', compact('categories'));
     }
 
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:100',
             'price' => 'required|numeric|min:0',
             'category' => 'required|string',
-            'status' => 'required|in:available,unavailable'
+            'status' => 'required|in:available,unavailable',
+            'description' => 'nullable|string',
+            'image' => 'nullable|string',
         ]);
 
-        // Nanti simpan ke database
-        return redirect()->route('admin.menu.index')->with('success', 'Menu berhasil ditambahkan!');
+        // Cari atau buat kategori jika diinput string
+        $category = Category::where('name', $validated['category'])
+            ->orWhere('id', $validated['category'])
+            ->first();
+
+        if (!$category) {
+            $category = Category::create([
+                'name' => $validated['category'],
+                'slug' => Str::slug($validated['category']),
+            ]);
+        }
+
+        MenuItem::create([
+            'category_id' => $category->id,
+            'name' => $validated['name'],
+            'slug' => Str::slug($validated['name']) . '-' . rand(100, 999),
+            'price' => (int) $validated['price'],
+            'description' => $validated['description'] ?? null,
+            'image' => $validated['image'] ?? 'ShoyuRamen.png',
+            'status' => $validated['status'],
+        ]);
+
+        return redirect()->route('admin.menu')->with('success', 'Menu baru berhasil ditambahkan!');
     }
 
     public function edit($id)
     {
-        // Data menu (mock)
-        $menu = ['id' => $id, 'name' => 'Edamame', 'price' => 12650, 'category' => 'Appetizer', 'status' => 'unavailable'];
-        $categories = ['Appetizer', 'Main dish', 'Side dish', 'Dessert', 'Hot drinks', 'Cold drinks'];
+        $menu = MenuItem::with('category')->findOrFail($id);
+        $categories = Category::orderBy('sort_order')->get();
 
-        return view('admin.menu-edit', compact('menu', 'categories'));
+        return response()->json([
+            'menu' => $menu,
+            'categories' => $categories,
+        ]);
     }
 
     public function update(Request $request, $id)
     {
-        $request->validate([
+        $menu = MenuItem::findOrFail($id);
+
+        $validated = $request->validate([
             'name' => 'required|string|max:100',
             'price' => 'required|numeric|min:0',
             'category' => 'required|string',
-            'status' => 'required|in:available,unavailable'
+            'status' => 'required|in:available,unavailable',
+            'description' => 'nullable|string',
+            'image' => 'nullable|string',
         ]);
 
-        // Nanti update ke database
-        return redirect()->route('admin.menu.index')->with('success', 'Menu berhasil diupdate!');
+        $category = Category::where('name', $validated['category'])
+            ->orWhere('id', $validated['category'])
+            ->first();
+
+        if ($category) {
+            $menu->category_id = $category->id;
+        }
+
+        $menu->name = $validated['name'];
+        $menu->price = (int) $validated['price'];
+        $menu->status = $validated['status'];
+        if (isset($validated['description'])) {
+            $menu->description = $validated['description'];
+        }
+        if (isset($validated['image']) && !empty($validated['image'])) {
+            $menu->image = $validated['image'];
+        }
+        $menu->save();
+
+        return redirect()->route('admin.menu')->with('success', 'Menu berhasil diperbarui!');
     }
 
     public function destroy($id)
     {
-        // Nanti hapus dari database
-        return redirect()->route('admin.menu.index')->with('success', 'Menu berhasil dihapus!');
+        $menu = MenuItem::findOrFail($id);
+        $menu->delete();
+
+        return redirect()->route('admin.menu')->with('success', 'Menu berhasil dihapus!');
     }
 
     public function toggleActive($id)
     {
-        // Nanti toggle status di database
-        return redirect()->back()->with('success', 'Status menu diperbarui!');
+        $menu = MenuItem::findOrFail($id);
+        $menu->status = $menu->status === 'available' ? 'unavailable' : 'available';
+        $menu->save();
+
+        if (request()->expectsJson()) {
+            return response()->json([
+                'success' => true,
+                'status' => $menu->status,
+                'message' => 'Status menu berhasil diubah!',
+            ]);
+        }
+
+        return redirect()->back()->with('success', 'Status menu berhasil diubah!');
     }
 }

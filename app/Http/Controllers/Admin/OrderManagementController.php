@@ -3,75 +3,86 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
+use App\Models\OrderItem;
 use Illuminate\Http\Request;
 
 class OrderManagementController extends Controller
 {
     public function index()
     {
-        // Data order (mock)
-        $orders = [
-            [
-                'id' => 1,
-                'time' => '12.45 WIB',
-                'table' => 'Table 4',
-                'customer' => 'Budi Santoso',
-                'items' => 'Shoyu ramen x2, Ocha x1',
-                'total' => 110000,
-                'status' => 'ongoing'
-            ],
-            [
-                'id' => 2,
-                'time' => '13.39 WIB',
-                'table' => 'Table 1',
-                'customer' => 'Andi Santoso',
-                'items' => 'Shoyu ramen x1, Gyoza x1',
-                'total' => 75000,
-                'status' => 'completed'
-            ]
-        ];
+        $orders = Order::with('items')->latest()->get();
 
         return view('admin.order', compact('orders'));
     }
 
-    public function store(Request $request)
+    public function show($id)
     {
-        // Nanti simpan ke database
-        return redirect()->route('admin.order.index')->with('success', 'Order berhasil ditambahkan!');
-    }
+        $order = Order::with('items.menuItem')->findOrFail($id);
 
-    public function update(Request $request, $id)
-    {
-        // Nanti update ke database
-        return redirect()->route('admin.order.index')->with('success', 'Order berhasil diupdate!');
-    }
+        if (request()->expectsJson()) {
+            return response()->json($order);
+        }
 
-    public function destroy($id)
-    {
-        // Nanti hapus dari database
-        return redirect()->route('admin.order.index')->with('success', 'Order berhasil dihapus!');
+        return view('admin.order', compact('order'));
     }
 
     public function updateStatus(Request $request, $id)
     {
-        $request->validate([
-            'status' => 'required|in:pending,processing,completed,cancelled'
+        $validated = $request->validate([
+            'status' => 'required|in:pending,processing,completed,cancelled,ongoing',
         ]);
 
-        // Nanti update status di database
-        return redirect()->back()->with('success', 'Status order diperbarui!');
+        $order = Order::findOrFail($id);
+
+        // Map status 'ongoing' jika dari frontend admin ke 'processing'
+        $status = $validated['status'];
+        if ($status === 'ongoing') {
+            $status = 'processing';
+        }
+
+        $order->status = $status;
+        $order->save();
+
+        if ($request->expectsJson() || $request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Status pesanan berhasil diperbarui!',
+                'status' => $order->status,
+            ]);
+        }
+
+        return redirect()->back()->with('success', 'Status pesanan berhasil diperbarui!');
+    }
+
+    public function destroy($id)
+    {
+        $order = Order::findOrFail($id);
+        $order->delete();
+
+        return redirect()->route('admin.order')->with('success', 'Pesanan berhasil dihapus!');
     }
 
     public function salesReport()
     {
-        // Nanti generate laporan dari database
+        $totalSales = Order::where('status', 'completed')->sum('total_amount');
+        $totalOrders = Order::count();
+        $revenueToday = Order::where('status', 'completed')
+            ->whereDate('created_at', today())
+            ->sum('total_amount');
+
+        $topItem = OrderItem::select('menu_item_name', \DB::raw('SUM(quantity) as total_qty'))
+            ->groupBy('menu_item_name')
+            ->orderByDesc('total_qty')
+            ->first();
+
         $report = [
-            'total_sales' => 1850000,
-            'total_orders' => 15,
-            'top_menu' => 'Shoyu Ramen',
-            'revenue_today' => 450000
+            'total_sales' => $totalSales,
+            'total_orders' => $totalOrders,
+            'top_menu' => $topItem ? $topItem->menu_item_name : 'Belum ada data',
+            'revenue_today' => $revenueToday,
         ];
 
-        return view('admin.reports-sales', compact('report'));
+        return response()->json($report);
     }
 }

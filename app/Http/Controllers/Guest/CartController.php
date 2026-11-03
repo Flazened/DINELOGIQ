@@ -3,45 +3,61 @@
 namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
+use App\Models\MenuItem;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
     /**
-     * Tampilkan halaman keranjang
+     * Tampilkan halaman keranjang belanja
      */
     public function index()
     {
         $cart = session()->get('cart', []);
         $items = [];
-        $total = 0;
+        $subtotal = 0;
 
-        // Mock data menu (sementara)
-        $mockMenus = [
-            1 => ['name' => 'Edamame', 'price' => 12650],
-            2 => ['name' => 'Shoyu Ramen', 'price' => 55000],
-            3 => ['name' => 'Miso Soup', 'price' => 15000],
-            4 => ['name' => 'Kakigori', 'price' => 20000],
-            5 => ['name' => 'Hot Ocha', 'price' => 8000],
-            6 => ['name' => 'Genmaicha', 'price' => 10000],
-        ];
+        if (!empty($cart)) {
+            $menuIds = array_keys($cart);
+            $menuItems = MenuItem::whereIn('id', $menuIds)->get()->keyBy('id');
 
-        foreach ($cart as $id => $details) {
-            if (isset($mockMenus[$id])) {
-                $subtotal = $mockMenus[$id]['price'] * $details['quantity'];
-                $items[] = [
-                    'id' => $id,
-                    'name' => $mockMenus[$id]['name'],
-                    'price' => $mockMenus[$id]['price'],
-                    'quantity' => $details['quantity'],
-                    'subtotal' => $subtotal,
-                    'notes' => $details['notes'] ?? ''
-                ];
-                $total += $subtotal;
+            foreach ($cart as $id => $details) {
+                if (isset($menuItems[$id])) {
+                    $menu = $menuItems[$id];
+                    $qty = is_array($details) ? ($details['quantity'] ?? 1) : (int) $details;
+                    $notes = is_array($details) ? ($details['notes'] ?? '') : '';
+                    $itemSubtotal = $menu->price * $qty;
+
+                    $items[] = [
+                        'id' => $menu->id,
+                        'name' => $menu->name,
+                        'price' => $menu->price,
+                        'image' => $menu->image ?? 'HokkaidoRamen.png',
+                        'quantity' => $qty,
+                        'subtotal' => $itemSubtotal,
+                        'notes' => $notes,
+                    ];
+
+                    $subtotal += $itemSubtotal;
+                }
             }
         }
 
-        return view('landing.cart', compact('items', 'total'));
+        // Biaya pengiriman dan pajak opsional
+        $deliveryFee = 0;
+        $taxFee = 0;
+        $total = $subtotal + $deliveryFee + $taxFee;
+
+        // Ambil riwayat pesanan sesi saat ini untuk ditampilkan di cart
+        $sessionId = session()->getId();
+        $recentOrders = Order::with('items.menuItem')
+            ->where('session_id', $sessionId)
+            ->latest()
+            ->take(5)
+            ->get();
+
+        return view('landing.cart', compact('items', 'subtotal', 'deliveryFee', 'taxFee', 'total', 'recentOrders'));
     }
 
     /**
@@ -49,45 +65,77 @@ class CartController extends Controller
      */
     public function add(Request $request)
     {
-        $request->validate([
-            'menu_id' => 'required|integer',
-            'quantity' => 'required|integer|min:1'
+        $validated = $request->validate([
+            'menu_id' => 'required|exists:menu_items,id',
+            'quantity' => 'required|integer|min:1',
+            'notes' => 'nullable|string|max:255',
         ]);
+
+        $menuId = (int) $validated['menu_id'];
+        $quantity = (int) $validated['quantity'];
+        $notes = $validated['notes'] ?? '';
 
         $cart = session()->get('cart', []);
 
-        if (isset($cart[$request->menu_id])) {
-            $cart[$request->menu_id]['quantity'] += $request->quantity;
+        if (isset($cart[$menuId])) {
+            $currentQty = is_array($cart[$menuId]) ? $cart[$menuId]['quantity'] : (int) $cart[$menuId];
+            $cart[$menuId] = [
+                'quantity' => $currentQty + $quantity,
+                'notes' => $notes ?: (is_array($cart[$menuId]) ? ($cart[$menuId]['notes'] ?? '') : ''),
+            ];
         } else {
-            $cart[$request->menu_id] = [
-                'quantity' => $request->quantity,
-                'notes' => $request->notes ?? ''
+            $cart[$menuId] = [
+                'quantity' => $quantity,
+                'notes' => $notes,
             ];
         }
 
         session()->put('cart', $cart);
 
-        return redirect()->back()->with('success', 'Menu ditambahkan ke keranjang!');
+        if ($request->expectsJson() || $request->wantsJson()) {
+            $totalCount = array_sum(array_column($cart, 'quantity'));
+            return response()->json([
+                'success' => true,
+                'message' => 'Menu berhasil ditambahkan ke keranjang!',
+                'cartCount' => $totalCount,
+            ]);
+        }
+
+        return redirect()->route('cart')->with('success', 'Menu berhasil ditambahkan ke keranjang!');
     }
 
     /**
-     * Update quantity item di keranjang
+     * Update kuantitas item di keranjang
      */
     public function update(Request $request)
     {
-        $request->validate([
-            'menu_id' => 'required|integer',
-            'quantity' => 'required|integer|min:1'
+        $validated = $request->validate([
+            'menu_id' => 'required|exists:menu_items,id',
+            'quantity' => 'required|integer|min:0',
         ]);
+
+        $menuId = (int) $validated['menu_id'];
+        $quantity = (int) $validated['quantity'];
 
         $cart = session()->get('cart', []);
 
-        if (isset($cart[$request->menu_id])) {
-            $cart[$request->menu_id]['quantity'] = $request->quantity;
-            session()->put('cart', $cart);
+        if ($quantity <= 0) {
+            unset($cart[$menuId]);
+        } else {
+            $currentNotes = isset($cart[$menuId]) && is_array($cart[$menuId]) ? ($cart[$menuId]['notes'] ?? '') : '';
+            $cart[$menuId] = [
+                'quantity' => $quantity,
+                'notes' => $currentNotes,
+            ];
         }
 
-        return redirect()->route('cart.index')->with('success', 'Keranjang diperbarui!');
+        session()->put('cart', $cart);
+
+        if ($request->expectsJson() || $request->wantsJson()) {
+            return response()->json(['success' => true, 'message' => 'Keranjang diperbarui!']);
+        }
+
+        return redirect()->route('cart')->with('success', 'Keranjang berhasil diperbarui!');
     }
 
     /**
@@ -102,7 +150,7 @@ class CartController extends Controller
             session()->put('cart', $cart);
         }
 
-        return redirect()->route('cart.index')->with('success', 'Item dihapus!');
+        return redirect()->route('cart')->with('success', 'Item berhasil dihapus dari keranjang!');
     }
 
     /**
@@ -111,6 +159,7 @@ class CartController extends Controller
     public function clear()
     {
         session()->forget('cart');
-        return redirect()->route('cart.index')->with('success', 'Keranjang dikosongkan!');
+
+        return redirect()->route('cart')->with('success', 'Keranjang berhasil dikosongkan!');
     }
 }

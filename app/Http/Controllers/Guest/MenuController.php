@@ -3,63 +3,56 @@
 namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\MenuItem;
 use Illuminate\Http\Request;
 
 class MenuController extends Controller
 {
     public function index(Request $request)
     {
-        // Data menu lengkap
-        $menus = [
-            'Appetizer' => [
-                ['name' => 'Edamame', 'image' => 'Edamame.png', 'price' => 12650]
-            ],
-            'Main Course' => [
-                ['name' => 'Shoyu ramen', 'image' => 'ShoyuRamen.png', 'price' => 55000]
-            ],
-            'Side Dish' => [
-                ['name' => 'Miso soup', 'image' => 'MisoSoup.png', 'price' => 15000]
-            ],
-            'Dessert' => [
-                ['name' => 'Kakigori', 'image' => 'KakiGori.png', 'price' => 20000]
-            ],
-            'Hot drinks' => [
-                ['name' => 'Hot ocha', 'image' => 'HotOcha.png', 'price' => 8000]
-            ],
-            'Cold Drinks' => [
-                ['name' => 'Genmaicha', 'image' => 'Genmaicha.png', 'price' => 10000]
-            ]
-        ];
+        $dbCategories = Category::with(['menuItems' => function ($query) {
+            $query->available();
+        }])->orderBy('sort_order')->get();
 
-        // Category labels
-        $categoryLabels = [
-            'Appetizer' => 'APPETIZERS - GOURMET BITES',
-            'Main Course' => 'MAIN COURSE - CHEF\'S SIGNATURE',
-            'Side Dish' => 'SIDE DISH - PERFECT PAIRING\'S',
-            'Dessert' => 'DESSERT - DIVINE ENDINGS',
-            'Hot drinks' => 'HOT DRINKS - WARMING INFUSIONS',
-            'Cold Drinks' => 'COLD DRINKS - CHILLED ELIXIRS'
-        ];
+        $menus = [];
+        $categoryLabels = [];
+        $categories = [];
 
-        // Category icons (untuk filter)
-        $categories = [
-            ['name' => 'Appetizer', 'icon' => 'Menu-1.png'],
-            ['name' => 'Main Course', 'icon' => 'Menu-2.png'],
-            ['name' => 'Side Dish', 'icon' => 'Menu-3.png'],
-            ['name' => 'Dessert', 'icon' => 'Menu-4.png'],
-            ['name' => 'Hot drinks', 'icon' => 'Menu-5.png'],
-            ['name' => 'Cold Drinks', 'icon' => 'Menu-6.png']
-        ];
+        foreach ($dbCategories as $cat) {
+            $menus[$cat->name] = $cat->menuItems->map(function ($item) {
+                return [
+                    'id' => $item->id,
+                    'name' => $item->name,
+                    'image' => $item->image,
+                    'price' => $item->price,
+                    'description' => $item->description,
+                ];
+            })->toArray();
 
-        // Cart count
+            $categoryLabels[$cat->name] = $cat->label ?? strtoupper($cat->name);
+            $categories[] = [
+                'name' => $cat->name,
+                'icon' => $cat->icon ?? 'Menu-1.png',
+            ];
+        }
+
+        // Cart count from session
         $cart = session()->get('cart', []);
-        $cartCount = array_sum(array_column($cart, 'quantity'));
+        $cartCount = 0;
+        foreach ($cart as $item) {
+            $cartCount += is_array($item) ? ($item['quantity'] ?? 1) : (int) $item;
+        }
 
         return view('landing.menu', compact('menus', 'categoryLabels', 'categories', 'cartCount'));
     }
 
     public function show($id)
     {
-        // Untuk detail menu (nanti)
+        $menuItem = MenuItem::with('category')->findOrFail($id);
+        $detailController = new DetailController();
+        $customization = $detailController->getCustomizationOptions($menuItem);
+
+        return view('landing.detail', compact('menuItem', 'customization'));
     }
 }

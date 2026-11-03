@@ -22,16 +22,17 @@
     ========================================== --}}
     <div class="bg-[#F0EDE5] h-40 w-full flex justify-between px-20 items-center">
         <!-- Filter Button -->
-        <section class="bg-black w-40 h-20 rounded-[40px] flex justify-center items-center">
+        <section class="bg-black w-40 h-20 rounded-[40px] flex justify-center items-center shadow-md">
             <h1 class="text-white text-2xl font-black">Filter</h1>
         </section>
         
         <!-- Search Input -->
-        <section class="h-18 w-280 border-3 border-black rounded-[200px] flex items-center justify-between">
+        <section class="h-18 w-280 border-3 border-black rounded-[200px] flex items-center justify-between bg-white/70">
             <input 
-                class="text-black px-10 text-2xl focus:outline-none" 
+                id="menuSearchInput"
+                class="text-black px-10 text-2xl focus:outline-none w-full bg-transparent" 
                 type="text" 
-                placeholder="Search for ramen...">
+                placeholder="Search for ramen, appetizer, drinks...">
             <img src="{{ asset('img/Icon/search.png') }}" alt="Search Icon" class="mr-10 h-auto w-8">
         </section>
     </div>
@@ -41,48 +42,17 @@
     {{-- ==========================================
          MENU CATEGORIES SECTION
     ========================================== --}}
-    <div class="bg-[#F0EDE5] h-100 w-full">
+    <div class="bg-[#F0EDE5] h-auto pb-16 w-full">
         <p class="text-black flex justify-center py-10 text-4xl font-medium">Find Dishes - Discover Our Menu</p>
         
         <div class="flex justify-center">
-            <div class="grid grid-cols-3 gap-12 -ml-20">
-
-                <!-- Category: Appetizer -->
-                <section class="flex justify-between items-center px-4 rounded-[38px] ml-25 mr-5 bg-[#004643] border-5 border-[#667080] h-20 w-80">
-                    <img src="{{ asset('img/Food/Menu-1.png') }}" class="h-10 w-auto" alt="Appetizer Icon">
-                    <p class="text-white font-medium text-[25px] mr-10">Appetizer</p>
-                </section>
-
-                <!-- Category: Main Course -->
-                <section class="flex justify-between items-center px-4 rounded-[38px] ml-25 mr-5 bg-[#004643] border-5 border-[#667080] h-20 w-80">
-                    <img src="{{ asset('img/Food/Menu-2.png') }}" class="h-20 w-auto" alt="Main Course Icon">
-                    <p class="text-white font-medium text-[25px] mr-7">Main Course</p>
-                </section>
-
-                <!-- Category: Side Dish -->
-                <section class="flex justify-between items-center px-4 rounded-[38px] ml-25 mr-5 bg-[#004643] border-5 border-[#667080] h-20 w-80">
-                    <img src="{{ asset('img/Food/Menu-3.png') }}" class="h-20 w-auto" alt="Side Dish Icon">
-                    <p class="text-white font-medium text-[25px] mr-20">Side Dish</p>
-                </section>
-
-                <!-- Category: Dessert -->
-                <section class="flex justify-between items-center px-4 rounded-[38px] ml-25 mr-5 bg-[#004643] border-5 border-[#667080] h-20 w-80">
-                    <img src="{{ asset('img/Food/Menu-4.png') }}" class="h-16 w-auto" alt="Dessert Icon">
-                    <p class="text-white font-medium text-[25px] mr-15">Dessert</p>
-                </section>
-
-                <!-- Category: Hot Drinks -->
-                <section class="flex justify-between items-center px-4 rounded-[38px] ml-25 mr-5 bg-[#004643] border-5 border-[#667080] h-20 w-80">
-                    <img src="{{ asset('img/Food/Menu-5.png') }}" class="h-20 mt-4 w-auto" alt="Hot Drinks Icon">
-                    <p class="text-white font-medium text-[25px] mr-12">Hot drinks</p>
-                </section>
-
-                <!-- Category: Cold Drinks -->
-                <section class="flex justify-between items-center px-4 rounded-[38px] ml-25 mr-5 bg-[#004643] border-5 border-[#667080] h-20 w-80">
-                    <img src="{{ asset('img/Food/Menu-6.png') }}" class="h-15 w-auto" alt="Cold Drinks Icon">
-                    <p class="text-white font-medium text-[25px] mr-15">Cold Drinks</p>
-                </section>
-            
+            <div class="grid grid-cols-3 gap-8 px-10 max-w-7xl">
+                @foreach($categories as $cat)
+                    <a href="#category-{{ \Illuminate\Support\Str::slug($cat['name']) }}" class="flex justify-between items-center px-6 rounded-[38px] bg-[#004643] border-5 border-[#667080] h-20 w-80 hover:scale-105 duration-300 shadow-md">
+                        <img src="{{ asset('img/Food/' . $cat['icon']) }}" class="h-12 w-auto object-contain" alt="{{ $cat['name'] }} Icon">
+                        <p class="text-white font-medium text-[22px]">{{ $cat['name'] }}</p>
+                    </a>
+                @endforeach
             </div>
         </div>
     </div>
@@ -93,103 +63,69 @@
     <div class="bg-[#201B1B] h-auto w-auto py-20 px-5">
 
         <!-- Section Header & Cart -->
-        <div class="flex justify-between px-10">
-            <div class="ml-120">
-                <p class="text-[#F9FF43] text-8xl font-bold">Our Menu</p>
+        <div class="flex justify-between px-10 items-center mb-10">
+            <div class="mx-auto pl-20">
+                <p class="text-[#F9FF43] text-7xl font-bold tracking-wide">Our Menu</p>
             </div>
-            <div class="bg-[#004643] h-15 w-30 rounded-[40px]">
-                <div class="flex mt-3 ml-5">
-                    <img src="{{ asset('img/Icon/Cart.png') }}" class="h-8 w-auto flex" alt="Cart Icon">
-                    <p class="text-white -mt-2 text-[35px] font-bold px-4">0</p>
+            <a href="{{ route('cart') }}" class="bg-[#004643] h-15 w-32 rounded-[40px] flex items-center justify-center hover:scale-105 duration-300 shadow-lg">
+                <div class="flex items-center gap-2">
+                    <img src="{{ asset('img/Icon/Cart.png') }}" class="h-7 w-auto" alt="Cart Icon">
+                    <span class="text-white text-[28px] font-bold">{{ $cartCount ?? 0 }}</span>
+                </div>
+            </a>
+        </div>
+
+        @if(session('success'))
+            <div class="max-w-4xl mx-auto mb-10 p-4 bg-emerald-700 text-white font-bold rounded-2xl text-center shadow-lg">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        {{-- Loop Dinamis Kategori dan Menu --}}
+        @forelse($menus as $catName => $items)
+            <div class="mt-20 category-block" id="category-{{ \Illuminate\Support\Str::slug($catName) }}">
+                <p class="ml-15 text-4xl text-white font-semibold tracking-wide border-b border-white/20 pb-4 inline-block">
+                    {{ $categoryLabels[$catName] ?? strtoupper($catName) }}
+                </p>
+                <div class="flex justify-start flex-wrap gap-8 px-10 mt-10">
+                    @forelse($items as $item)
+                        <section class="menu-card bg-white h-135 w-96 rounded-[24px] hover:scale-105 duration-300 shadow-xl overflow-hidden flex flex-col justify-between" data-name="{{ strtolower($item['name']) }}">
+                            <a href="{{ route('detail', ['id' => $item['id']]) }}" class="block p-5">
+                                <img src="{{ asset('img/Food/' . $item['image']) }}" 
+                                     class="h-72 w-full object-cover rounded-2xl shadow-sm" 
+                                     alt="{{ $item['name'] }}"
+                                     onerror="this.src='{{ asset('img/Food/ShoyuRamen.png') }}'">
+                                <div class="mt-5">
+                                    <p class="text-3xl font-bold text-gray-900 leading-tight">{{ $item['name'] }}</p>
+                                    <p class="text-2xl font-extrabold text-[#7F0017] mt-2">Rp {{ number_format($item['price'], 0, ',', '.') }}</p>
+                                </div>
+                            </a>
+
+                            <div class="px-5 pb-5 flex items-center justify-between pt-2 border-t border-gray-100">
+                                <form action="{{ route('cart.add') }}" method="POST" class="inline">
+                                    @csrf
+                                    <input type="hidden" name="menu_id" value="{{ $item['id'] }}">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <button type="submit" class="bg-[#7F0017] hover:bg-amber-900 text-white font-bold text-sm px-5 py-2.5 rounded-full duration-200">
+                                        + Add to Cart
+                                    </button>
+                                </form>
+                                <a href="{{ route('detail', ['id' => $item['id']]) }}" class="flex items-center gap-1 text-gray-500 hover:text-black font-semibold text-sm">
+                                    <span>Detail</span>
+                                    <img src="{{ asset('img/Icon/next.png') }}" class="h-5 w-auto" alt="Next Icon">
+                                </a>
+                            </div>
+                        </section>
+                    @empty
+                        <p class="text-gray-400 italic ml-15">Belum ada menu di kategori ini.</p>
+                    @endforelse
                 </div>
             </div>
-        </div>
-
-        <!-- 1. Appetizers -->
-        <div class="mt-30">
-            <p class="ml-15 text-5xl text-white">APPETIZERS - GOURMET BITES</p>
-            <div class="flex justify-between flex-wrap px-5">
-                <section class="bg-white h-130 w-100 rounded-[20px] mt-30 hover:scale-105 duration-300">
-                    <a href="{{ route('detail') }}">
-                        <img src="{{ asset('img/Food/Edamame.png') }}" class="h-90 w-90 ml-5 mt-5 object-cover rounded-2xl" alt="Edamame">
-                        <div class="flex px-5 py-10 justify-between">
-                            <p class="text-4xl font-bold">Edamame</p>
-                            <img src="{{ asset('img/Icon/next.png') }}" class="h-8 w-auto" alt="Next Icon">
-                        </div>
-                    </a>
-                </section>
+        @empty
+            <div class="text-center py-20">
+                <p class="text-white text-3xl font-bold">Katalog menu sedang dipersiapkan.</p>
             </div>
-        </div>
-
-        <!-- 2. Main Course -->
-        <div class="mt-30">
-            <p class="ml-15 text-5xl text-white">MAIN COURSE - CHEF’S SIGNATURE</p>
-            <div class="flex justify-between flex-wrap px-5">
-                <section class="bg-white h-130 w-100 rounded-[20px] mt-30 hover:scale-105 duration-300">
-                    <img src="{{ asset('img/Food/ShoyuRamen.png') }}" class="h-90 w-90 ml-5 mt-5 object-cover rounded-2xl" alt="Shoyu Ramen">
-                    <div class="flex px-5 py-10 justify-between">
-                        <p class="text-4xl font-bold">Shoyu ramen</p>
-                        <img src="{{ asset('img/Icon/next.png') }}" class="h-8 w-auto" alt="Next Icon">
-                    </div>
-                </section>
-            </div>
-        </div>
-
-        <!-- 3. Side Dish -->
-        <div class="mt-30">
-            <p class="ml-15 text-5xl text-white">SIDE DISH - PERFECT PAIRING’S</p>
-            <div class="flex justify-between flex-wrap px-5">
-                <section class="bg-white h-130 w-100 rounded-[20px] mt-30 hover:scale-105 duration-300">
-                    <img src="{{ asset('img/Food/MisoSoup.png') }}" class="h-90 w-90 ml-5 mt-5 object-cover rounded-2xl" alt="Miso Soup">
-                    <div class="flex px-5 py-10 justify-between">
-                        <p class="text-4xl font-bold">Miso soup</p>
-                        <img src="{{ asset('img/Icon/next.png') }}" class="h-8 w-auto" alt="Next Icon">
-                    </div>
-                </section>
-            </div>
-        </div>
-
-        <!-- 4. Dessert -->
-        <div class="mt-30">
-            <p class="ml-15 text-5xl text-white">DESSERT - DIVINE ENDINGS</p>
-            <div class="flex justify-between flex-wrap px-5">
-                <section class="bg-white h-130 w-100 rounded-[20px] mt-30 hover:scale-105 duration-300">
-                    <img src="{{ asset('img/Food/KakiGori.png') }}" class="h-90 w-90 ml-5 mt-5 object-cover rounded-2xl" alt="Kakigori">
-                    <div class="flex px-5 py-10 justify-between">
-                        <p class="text-4xl font-bold">Kakigori</p>
-                        <img src="{{ asset('img/Icon/next.png') }}" class="h-8 w-auto" alt="Next Icon">
-                    </div>
-                </section>
-            </div>
-        </div>
-
-        <!-- 5. Hot Drinks -->
-        <div class="mt-30">
-            <p class="ml-15 text-5xl text-white">HOT DRINKS - WARMING INFUSIONS</p>
-            <div class="flex justify-between flex-wrap px-5">
-                <section class="bg-white h-130 w-100 rounded-[20px] mt-30 hover:scale-105 duration-300">
-                    <img src="{{ asset('img/Food/HotOcha.png') }}" class="h-90 w-90 ml-5 mt-5 object-cover rounded-2xl" alt="Hot Ocha">
-                    <div class="flex px-5 py-10 justify-between">
-                        <p class="text-4xl font-bold">Hot ocha</p>
-                        <img src="{{ asset('img/Icon/next.png') }}" class="h-8 w-auto" alt="Next Icon">
-                    </div>
-                </section>
-            </div>
-        </div>
-
-        <!-- 6. Cold Drinks -->
-        <div class="mt-30">
-            <p class="ml-15 text-5xl text-white">COLD DRINKS - CHILLED ELIXIRS</p>
-            <div class="flex justify-between flex-wrap px-5">
-                <section class="bg-white h-130 w-100 rounded-[20px] mt-30 hover:scale-105 duration-300">
-                    <img src="{{ asset('img/Food/Genmaicha.png') }}" class="h-90 w-90 ml-5 mt-5 object-cover rounded-2xl" alt="Genmaicha">
-                    <div class="flex px-5 py-10 justify-between">
-                        <p class="text-4xl font-bold">Genmaicha</p>
-                        <img src="{{ asset('img/Icon/next.png') }}" class="h-8 w-auto" alt="Next Icon">
-                    </div>
-                </section>
-            </div>
-        </div>
+        @endforelse
 
     </div>
 
@@ -197,6 +133,26 @@
          FOOTER SECTION
     ========================================== --}}
     @include('partials.landing.footer')
+
+    <script>
+        // Client-side quick filter
+        const searchInput = document.getElementById('menuSearchInput');
+        if (searchInput) {
+            searchInput.addEventListener('input', function(e) {
+                const query = e.target.value.toLowerCase().trim();
+                const cards = document.querySelectorAll('.menu-card');
+
+                cards.forEach(card => {
+                    const name = card.getAttribute('data-name') || '';
+                    if (!query || name.includes(query)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        }
+    </script>
 
 </body>
 </html>
